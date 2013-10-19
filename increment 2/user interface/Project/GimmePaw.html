@@ -1,0 +1,59 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Untitled Document</title>
+<link href="jQueryAssets/jquery.ui.core.min.css" rel="stylesheet" type="text/css">
+<link href="jQueryAssets/jquery.ui.theme.min.css" rel="stylesheet" type="text/css">
+<link href="jquery-mobile/jquery.mobile.structure-1.0.min.css" rel="stylesheet" type="text/css">
+<link href="jquery.ui.button.min.css" rel="stylesheet" type="text/css">
+<script src="jQueryAssets/jquery-1.8.3.min.js" type="text/javascript"></script>
+<script src="jquery-mobile/jquery.mobile-1.0.min.js" type="text/javascript"></script>
+<script src="jquery-ui-1.9.2.button.custom.min.js" type="text/javascript"></script>
+</head>
+
+<body>
+<form name="myWebForm" method="post">
+  <p>&nbsp;  
+  <div data-role="page" id="page">
+    <div data-role="header">
+      <h1>Header</h1>
+    </div>
+    <div data-role="content">
+      <p>
+      </p>
+      <div data-role="fieldcontain">
+        <label for="textinput">Username:</label>
+        <input type="text" name="textinput" id="textinput" value=""  />
+      </div>
+      <p><br/>
+        Password:
+        <input title="Please Enter Password" id="password" name="password" type="password" size="12" />
+      </p>
+      <p><br />
+        Re-type:
+        <input title="Please Re-type Password" id="repassword" name="repassword" type="password" size="12" />
+      </p>
+      <p><br />
+        Email:
+        <input title="Please Re-type Password" id="email" name="email" type="text" size="30" />
+      </p>
+      <p>
+        <button id="Button1">Register</button>
+      </p>
+    </div>
+    <div data-role="footer">
+      <h4>Footer</h4>
+    </div>
+  </div>
+  </p>
+  <p><br />
+  </p>
+</form>
+<script type="text/javascript">
+$(function() {
+	$( "#Button1" ).button(); 
+});
+</script>
+</body>
+</html>

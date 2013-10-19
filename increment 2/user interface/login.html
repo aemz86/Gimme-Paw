@@ -1,0 +1,163 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>User Registration</title>
+  
+	<link href="jquery-mobile/jquery.mobile.theme-1.0.min.css" rel="stylesheet" type="text/css">
+	<link href="jquery-mobile/jquery.mobile.structure-1.0.min.css" rel="stylesheet" type="text/css">
+	<script src="jquery-mobile/jquery-1.6.4.min.js" type="text/javascript"></script>
+	<script src="jquery-mobile/jquery.mobile-1.0.min.js" type="text/javascript"></script>  
+	<script type='text/javascript' src='http://code.jquery.com/jquery-1.8.3.js'></script>
+  
+  
+  
+  <link rel="stylesheet" type="text/css" href="/css/result-light.css">
+  
+  
+  <style type='text/css'>
+    
+  </style>
+  
+
+
+<script type='text/javascript'>
+
+    $(document).ready(function () {
+
+        var test = document.getElementById("#submit");
+        var redirect = "Project/GP-homepage.html";
+        var valid = true;
+
+
+
+
+
+        //var email = $("#email");
+
+		/*
+        var myUser = {
+            username: user.val(),
+            password: pass.val(),
+            email: email.val()
+        };
+		*/
+        $('#submit').on('click', function () {
+			var user = $("#user").val();
+			var pass = $("#pass").val();
+			//alert(user);
+			//alert(pass);
+			if (valid) {
+				//alert(valid + " validity");
+                $.ajax({
+                    type: 'GET',
+                    url: '/aspnet_client/WcfService1/Service1.svc/signin/'+user+'/'+pass+'',
+                    //data: JSON.stringify({ user: myUser }),
+                    //contentType: "application/json; charset=utf-8",
+                    //dataType: 'json',
+					/*
+                    statusCode: {
+                        200: function (response) {
+                            alert('200');
+                        },
+                        201: function (response) {
+                            alert('201');
+                        },
+                        500: function (response) {
+                            alert('500');
+                        },
+                        404: function (response) {
+                            alert('404');
+                        }
+                    },
+					*/
+                    //On success, redirect to home
+                    success: function (data) {
+
+                        //alert('success~~~');
+						//alert(data + " success data ");
+                        //alert(data.NewUser.username);
+                        //send an e-mail
+
+
+                        //$('#results').html("Your Username: " + data.NewUser.username + " <br/> YOUR EMAIL: " + data.NewUser.email);
+						if (data) {
+							//alert(data);
+							location.href = redirect;
+							
+							}
+						else
+						{
+							//alert(data);						
+							//alert(pass);
+                        $('#results').html("Wrong password and/or username. Please try again.");							
+							location.href ="#";
+						}
+
+                    },
+                    error: function (jqXHR, textStatus, errorThrown) {
+                        alert(window.location.pathname);
+                        alert(textStatus + "      " + errorThrown);
+                    }
+                });
+            }
+        });
+
+
+    });
+
+</script>
+
+
+</head>
+<body>
+<div data-role="page" id="page1">
+  <div data-role="header">
+    <h1>Login</h1>
+  </div>
+  <div data-role="content">
+    <div data-role="fieldcontain">
+      <p>
+        <label for="textinput">Username</label>
+        <input type="text" name="textinput" id="user" value=""/>
+      </p>
+      
+      <div data-role="fieldcontain">
+        <p>
+          <label for="passwordinput">Password</label>
+          <input type="password" name="password" id="pass" value=""  />
+        </p>
+        <div data-role="fieldcontain">
+        
+          <p>
+            <input type="button" class = "list" id ="submit" value="Sign in" />
+          </p>
+<p id="results"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div data-role="footer">
+
+    <h4>Footer  </h4>
+  </div>
+</div>
+
+
+
+    <!--
+User: <input id="user" />
+<br/>
+Pass: <input type = "password" id="pass" />
+<br/>
+E-mail: <input id="email" />
+<br/>
+<button id = "submit">test</button>
+
+
+    -->
+</body>
+
+
+</html>
+
